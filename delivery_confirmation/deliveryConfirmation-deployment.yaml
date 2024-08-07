@@ -16,7 +16,7 @@ spec:
       - name: deliveryconfirmation
         image: deliveryconfirmation-service
         ports:
-        - containerPort: 5000
+        - containerPort: 5004
 ---
 apiVersion: v1
 kind: Service
@@ -28,4 +28,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 5004

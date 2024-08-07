@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: weborder-deployment
+  name: wishlist-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: weborder
+      app: wishlist
   template:
     metadata:
       labels:
-        app: weborder
+        app: wishlist
     spec:
       containers:
-      - name: weborder
-        image: web-order-service
+      - name: wishlist
+        image: wishlist-service
         ports:
-        - containerPort: 5001
+        - containerPort: 5005
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-order-service
+  name: wishlist-service
 spec:
   selector:
-    app: weborder
+    app: wishlist
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5001
+      targetPort: 5005

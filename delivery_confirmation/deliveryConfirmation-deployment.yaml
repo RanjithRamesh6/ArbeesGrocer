@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deliveryconfirmation-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deliveryconfirmation
+  template:
+    metadata:
+      labels:
+        app: deliveryconfirmation
+    spec:
+      containers:
+      - name: deliveryconfirmation
+        image: deliveryconfirmation-service
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deliveryconfirmation-service
+spec:
+  selector:
+    app: deliveryconfirmation
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
